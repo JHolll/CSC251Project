@@ -43,6 +43,6 @@ public class Demo
       + "\nPolicyholder's Height: " + pHHeight);
       System.out.println("Policyholder's Weight: " + String.format("%.2f", policy.GetBMI()) + "\nPolicy Price: " + String.format("%.2f", policy.GetPrice()));
       
-    }
+    } 
        
 }
