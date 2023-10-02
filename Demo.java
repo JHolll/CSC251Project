@@ -19,33 +19,38 @@ public class Demo
       String pHFirstName = "b";
       String pHLastName = "c";
       int pHAge = 0;
-      String pHSmoking = "d";
+      String pHSmoking = "a";
       double pHHeight = 0;
       double pHWeight = 0;
       
       int run = 0;
       
+      int numSmokers = 0;
+      int numNonSmokers = 0;
       
       while(run != 6) 
       {
       
-      //System.out.println("Please enter the Policy Number: ");
       policyNum = scnr.nextInt();
       scnr.nextLine();
-      //System.out.println("Please enter the Provider Name: ");
       providerName = scnr.nextLine();
-      //System.out.println("Please enter the Policyholder's First Name: ");
       pHFirstName = scnr.nextLine();
-      //System.out.println("Please enter the Policyholder's Last Name: ");
       pHLastName = scnr.nextLine();
-      //System.out.println("Please enter the Policyholder's Age: ");
       pHAge = scnr.nextInt();
       scnr.nextLine();
-      //System.out.println("Please enter the Policyholder's Smoking Status (smoker/non-smoker): ");
+      
+      pHSmoking = "a";
+      
       pHSmoking = scnr.nextLine();      
-      //System.out.println("Please enter the Policyholder's Height (in inches): ");
+      if(pHSmoking.equals("smoker"))
+      {
+         numSmokers++;
+      }
+      else if(pHSmoking.equals("non-smoker"))
+      {
+         numNonSmokers++;
+      }
       pHHeight = scnr.nextDouble();
-      //System.out.println("Please enter the Policyholder's Weight (in pounds): ");
       pHWeight = scnr.nextDouble();
       
       run++;
@@ -63,7 +68,7 @@ public class Demo
       System.out.println("Policyholder's Weight: " + String.format("%.2f", policy.GetBMI()) + "\nPolicy Price: " + String.format("%.2f", policy.GetPrice()) + "\n");
       }
       
-      
+      System.out.println("The number of policies with a smoker is: " + numSmokers + "\nThe number of policies with a non-smoker is: " + numNonSmokers);
             
     } 
        
