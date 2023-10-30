@@ -126,4 +126,13 @@ public class PolicyHolder
       return bMI;
    }
 
+   //Creates and returns a string description
+   public String toString()
+   {
+      String hStr = "Policy Number: " + pNumber + "\nProvider name: " + provider + "\nPolicyholder's First Name: " + firstName
+      + "\nPolicyholde'’s Last Name: " + lastName + "\nPolicyholder's Age: " + age + "\nPolicyholder's Smoking Status: " + smoking
+      + "\nPolicyholder's Height: " + height + "Policyholder's Weight: " + bMI);
+      
+      return str;
+   }
 }
