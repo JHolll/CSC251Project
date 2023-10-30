@@ -36,5 +36,13 @@ public class Policy
       return price;
    }
    
+   //Creates and returns a string description
+   public String toString()
+   {
+      String str = "\nPolicy Price: " + price;
+      
+      return pStr;
+   }
+   
 }
       
