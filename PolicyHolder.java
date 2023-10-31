@@ -1,8 +1,6 @@
 
 public class PolicyHolder
 {
-   private int pNumber;
-   private String provider;
    private String firstName;
    private String lastName;
    private int age;
@@ -10,15 +8,14 @@ public class PolicyHolder
    private double height;
    private double weight;
       
-    private double bMI;
+   private double bMI;
+   private double price;
     
     /**
    No-arg constructor that explicitly initializes all fields
    */
       public PolicyHolder()
    {
-      pNumber = -1;
-      provider = "NoName";
       firstName = "NoName";
       lastName = "NoName";
       age = -1;
@@ -26,6 +23,7 @@ public class PolicyHolder
       height = -1;
       weight = -1;
       bMI = -1;
+      price = -1;
    }
     
    /**
@@ -39,39 +37,32 @@ public class PolicyHolder
       @param height The Policyholder's height
       @param weight The Policytholder's weight
    */
-      public PolicyHolder(int policyNum, String providerName, String pHFirstName, String pHLastName, int pHAge, String pHSmoking, double pHHeight, double pHWeight)
+      public PolicyHolder(String pHFirstName, String pHLastName, int pHAge, String pHSmoking, double pHHeight, double pHWeight)
    {
-      pNumber = policyNum;
-      provider = providerName;
       firstName = pHFirstName;
       lastName = pHLastName;
       age = pHAge;
       smoking = pHSmoking;
       height = pHHeight;
       weight = pHWeight;
+      
    } 
    
-   //getters//
-   /**
-   @return The Policy Number
-   */
-   public int setPolicyNumber()
+   public PolicyHolder(PolicyHolder object2)
    {
-      return pNumber;
+      firstName = object2.firstName;
+      lastName = object2.lastName;
+      age = object2.age;
+      smoking = object2.smoking;
+      height = object2.height;
+      weight = object2.weight;
    }
    
-   /**
-   @return The Policy Provider's Name
-   */
-   public String setProviderName()
-   {
-      return provider;
-   }
-   
+   //getters//  
    /**
    @return The Policyholder's first name
    */
-   public String setPHFirstName()
+   public String getFirstName()
    {
       return firstName;
    }
@@ -79,7 +70,7 @@ public class PolicyHolder
    /**
    @return The Policyholder's last name
    */
-   public String setPHLastName()
+   public String getLastName()
    {
       return lastName;
    }
@@ -87,7 +78,7 @@ public class PolicyHolder
    /**
    @return The Policyholder's age
    */
-   public int setPHAge()
+   public int getAge()
    {
       return age;
    }
@@ -95,7 +86,7 @@ public class PolicyHolder
    /**
    @return The Policyholder's smoking status
    */
-   public String setPHSmoking()
+   public String getSmoking()
    {
       return smoking;
    }
@@ -103,7 +94,7 @@ public class PolicyHolder
    /**
    @return The Policyholder's height
    */
-   public double setPHHeight()
+   public double getHeight()
    {
       return height;
    }
@@ -111,9 +102,58 @@ public class PolicyHolder
    /**
    @return The Policyholder's weight
    */
-   public double setPHWeight()
+   public double getWeight()
    {
       return weight;
+   }
+   
+   //setters//
+   /**
+   @param firstName The Policyholder's first name 
+   */
+   public void setFirstName(String pHFirstName)
+   {
+      firstName = pHFirstName;
+   }
+   
+   /**
+   @param lastName The Policyholder's last name 
+   */
+   public void setLastName(String pHLastName)
+   {
+      lastName = pHLastName;
+   }
+   
+   /**
+   @param age The Policyholder's Age 
+   */
+   public void setAge(int pHAge)
+   {
+      age = pHAge;
+   }
+   
+   /**
+   @param smoking The Policyholder's Smoking Status
+   */
+   public void setSmoking(String pHSmoking)
+   {
+      smoking = pHSmoking;
+   }
+   
+   /**
+   @param smoking The Policyholder's Height
+   */
+   public void setHeight(double pHHeight)
+   {
+      height = pHHeight;
+   }
+   
+   /**
+   @param smoking The Policyholder's Weight
+   */
+   public void setWeight(double pHWeight)
+   {
+      weight = pHWeight;
    }
    
    /**
@@ -125,14 +165,34 @@ public class PolicyHolder
       bMI = (weight * 703) / (height * height);
       return bMI;
    }
+   
+   /**
+   Calculates the Policy's price
+   @return The price of the Policy
+   */
+   public double GetPrice()
+   {
+      price = 600;
+      if (age > 50)
+      {
+         price = price + 75;
+      }
+      if (smoking.equals("smoker"))
+      {
+         price = price + 100;
+      }
+      if (bMI > 35)
+      {
+         price = price + (bMI-35) * 20;
+      }
+      return price;
+   }
 
    //Creates and returns a string description
    public String toString()
    {
-      String hStr = "Policy Number: " + pNumber + "\nProvider name: " + provider + "\nPolicyholder's First Name: " + firstName
+      return String.format("\nPolicyholder's First Name: " + firstName
       + "\nPolicyholde'’s Last Name: " + lastName + "\nPolicyholder's Age: " + age + "\nPolicyholder's Smoking Status: " + smoking
-      + "\nPolicyholder's Height: " + height + "Policyholder's Weight: " + bMI);
-      
-      return str;
+      + "\nPolicyholder's Height: " + height + "\nPolicyholder's Weight: " + String.format("%.2f",GetBMI()) + "\nPolicy Price: $" + String.format("%.2f",GetPrice()));
    }
 }

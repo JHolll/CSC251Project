@@ -11,8 +11,6 @@ public class Demo
       Scanner scnr = new Scanner(file);
       
       ArrayList<Policy> policyList = new ArrayList<Policy>();
-      
-      Policy policy;
 
       int policyNum = 0;
       String providerName = "a";
@@ -55,20 +53,21 @@ public class Demo
       
       run++;
       
-      policyList.add(new Policy(policyNum, providerName, pHFirstName, pHLastName, pHAge, pHSmoking, pHHeight, pHWeight));
+      PolicyHolder policyHolder = new PolicyHolder(pHFirstName, pHLastName, pHAge, pHSmoking, pHHeight, pHWeight);
+      
+      Policy policy = new Policy(policyHolder, policyNum, providerName);
+      
+      policyList.add(policy);
+      
       }
       
-      for(int i = 0; i < policyList.size(); i++)
+      for(int i=0; i < policyList.size(); i++)
       {
-      policy = new Policy(policyNum, providerName, pHFirstName, pHLastName, pHAge, pHSmoking, pHHeight, pHWeight);
-      
-      System.out.println("Policy Number: " + policyNum + "\nProvider name: " + providerName + "\nPolicyholder's First Name: " + pHFirstName
-      + "\nPolicyholde'’s Last Name: " + pHLastName + "\nPolicyholder's Age: " + pHAge + "\nPolicyholder's Smoking Status: " + pHSmoking
-      + "\nPolicyholder's Height: " + pHHeight);
-      System.out.println("Policyholder's Weight: " + String.format("%.2f", policy.GetBMI()) + "\nPolicy Price: " + String.format("%.2f", policy.GetPrice()) + "\n");
+         System.out.println(policyList.get(i));
+         System.out.println();
       }
       
-      System.out.println("The number of policies with a smoker is: " + numSmokers + "\nThe number of policies with a non-smoker is: " + numNonSmokers);
+      //System.out.println("There were " + numPolicy + "Policy objects created" + "The number of policies with a smoker is: " + numSmokers + "\nThe number of policies with a non-smoker is: " + numNonSmokers);
             
     } 
        
