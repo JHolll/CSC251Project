@@ -2,16 +2,22 @@
 
 public class Policy
 {
+   static int numPolicy;
       
       private double price;
       
    /**
    No-arg constructor that explicitly initializes all fields
    */
-      public Policy()
+   public Policy()
    {
-      
+      numPolicy++;
       price = -1;
+   }
+   
+   public int getNumPolicy()
+   {
+      return numPolicy;
    }
    
    /**
